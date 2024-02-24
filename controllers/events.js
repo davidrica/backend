@@ -3,14 +3,18 @@ const {response} = require('express')
 const Evento = require('../models/Events')
 const getEventos = async (req, res = response )=>{
     console.log("estas en ....getEventos ")
-    const eventos = await Evento.find().populate('user','name')
+    try {
+        const eventos = await Evento.find().populate('user','name')
 
-
-    res.status(201).json({
-        ok:true,
-        eventos:eventos
-    })    
-
+        res.status(201).json({
+            ok:true,
+            eventos:eventos
+        })    
+            
+    } catch (error) {
+        console.log(error)
+        
+    }
 
 }
 
