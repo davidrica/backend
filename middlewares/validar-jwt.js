@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const validarJWT = (req=request,res=response,next)=>{
     
-    
-    const ip= req.socket.remoteAddress
+   
     const token = req.header('x-token');
     if(!token){
         return res.status(401).json({
@@ -25,8 +24,7 @@ const validarJWT = (req=request,res=response,next)=>{
     } catch (error) {
         return res.status(401).json({
             ok:false,
-            msg: 'Token no valido.',
-            ip
+            msg: 'Token no valido.' 
         })
         
     }
